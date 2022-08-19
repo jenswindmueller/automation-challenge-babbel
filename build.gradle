@@ -1,0 +1,46 @@
+apply plugin: 'java'
+
+group 'test-automation-setup'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+project.ext {
+    cucumberVersion = '7.5.0'
+}
+
+dependencies {
+    implementation 'org.apache.logging.log4j:log4j-api:2.18.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.18.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.5.0'
+    testImplementation 'io.cucumber:cucumber-java:7.5.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.3.0'
+    implementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.3.0'
+    testImplementation 'io.cucumber:cucumber-picocontainer:7.5.0'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'html:reports/test-report/cucumber-report.html', '--plugin', 'pretty', '--glue', 'StepDefinitions', 'src/test/resources']
+        }
+    }
+}
