@@ -1,40 +1,44 @@
 package StepDefinitions;
 
 
-import cucumber.TestContext;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import lombok.extern.log4j.Log4j2;
+import manager.PageObjectManager;
+import manager.WebDriverManager;
+import org.openqa.selenium.WebDriver;
 import pageObjects.HomePage;
-import pageObjects.TestPage;
 
 
 
 @Log4j2
 public class StepDefinitionsTemplate {
 
-    TestPage testPage;
+    WebDriver driver;
     HomePage homePage;
-    TestContext testContext;
+    PageObjectManager pageObjectManager;
+    WebDriverManager webDriverManager;
 
 
-    public StepDefinitionsTemplate(TestContext context) {
-        testContext = context;
-        testPage = testContext.getPageObjectManager().getTestPage();
-        homePage = testContext.getPageObjectManager().getHomePage();
+    @Before("@web")
+    public void openBrowser() {
+        webDriverManager = new WebDriverManager();
+        driver = webDriverManager.getDriver();
+        pageObjectManager = new PageObjectManager(driver);
     }
-
-    @Given("Open google.com")
-    public void openGoogleCom() {
+    @Given("User is on Home Page")
+    public void user_is_on_Home_Page(){
+        homePage = pageObjectManager.getHomePage();
         homePage.navigateTo_HomePage();
     }
     @When("Clicking on reject all button")
     public void clickingOnRejectAllButton() {
-        testPage.clickRejectAll();
+        pageObjectManager.getTestPage().clickRejectAll();
     }
 
     @When("Entering number {int} and {int}")
     public void entering_number_and(Integer first, Integer second) {
-        testPage.searchKeyword(first + " + "  + second);
+        pageObjectManager.getTestPage().searchKeyword(first + " + "  + second);
     }
 }
