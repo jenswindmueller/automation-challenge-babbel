@@ -1,9 +1,14 @@
-Feature: Hello World.
+Feature: Babbel's QA app
 
 @appium
-  Scenario: User checks if .
-    Given User Logs in to QA App
-    When User is logged in sucessfully
-    And User clicks On CLick me button below the Image
+  Scenario Outline: User checks if text appears after clicking Click Me button below Welcome text
+    Given User Logs in to QA App with "<email>" and "<password>"
+    When User is logged in successfully
+    And User clicks On CLick Me button below the Image
     And User clicks On Click me button below the Welcome text
-    Then User Sees a Text appear and disapear again
+    Then User checks if a Text appears
+
+  Examples:
+   | email               | password |
+   | arthur@gmail.com    | 98765    |
+   | percival@gmail.com  | 123456   |

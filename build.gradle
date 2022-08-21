@@ -25,9 +25,8 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     implementation 'org.seleniumhq.selenium:selenium-chrome-driver:3.141.59'
-    testImplementation 'io.appium:java-client:7.3.0'
+    implementation 'io.appium:java-client:7.3.0'
     implementation 'org.assertj:assertj-core:3.16.1'
-//    testImplementation 'io.cucumber:cucumber-picocontainer:7.5.0'
 }
 
 configurations {
@@ -42,7 +41,7 @@ task cucumberWeb() {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'html:reports/test-report/cucumber-report.html', '--plugin', 'pretty', '--glue', 'StepDefinitions', 'src/test/resources/features']
+            args = ['--plugin', 'html:reports/test-report/cucumber-report.html', '--plugin', 'pretty', '--glue', 'StepDefinitionsWeb', 'src/test/resources/features']
         }
     }
 }
@@ -53,7 +52,7 @@ task cucumberAndriod() {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'html:reports/test-report/cucumberAndriod-report.html', '--plugin', 'pretty', '--glue', 'AppiumTest', 'src/test/resources/andriodFeatures']
+            args = ['--plugin', 'html:reports/test-report/cucumberAndriod-report.html', '--plugin', 'pretty', '--glue', 'StepDefinitionsAndriod', 'src/test/resources/andriodFeatures']
         }
     }
 }
