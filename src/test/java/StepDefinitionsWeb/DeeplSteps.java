@@ -6,7 +6,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import lombok.extern.log4j.Log4j2;
 import manager.PageObjectManager;
 import manager.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -14,16 +13,14 @@ import pageObjects.HomePage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Log4j2
-public class StepDefinitionsTemplate {
+public class DeeplSteps {
 
     WebDriver driver;
     HomePage homePage;
     PageObjectManager pageObjectManager;
     WebDriverManager webDriverManager;
 
-
-    @Before("@web")
+    @Before("@web") // gets executed before any test scenario in the web
     public void openBrowser() {
         webDriverManager = new WebDriverManager();
         driver = webDriverManager.getDriver();
@@ -63,12 +60,18 @@ public class StepDefinitionsTemplate {
         try {
             Thread.sleep(2000); //using Thread.sleep to give the deepl time to detect the Language
         } catch(InterruptedException e) {
-            log.info("got interrupted!");
         }
         assertThat(homePage.getSourceLanguage()).as("The Translator did not detect the correct language").isEqualTo(language);
     }
 
-    @After("@web")
+    @Then("User verifies amount of languages are as stated")
+    public void userVerifiesAmountOfLanguagesAreAsStated() {
+        assertThat(homePage.getAdvertisedCountOfLanguages())
+                .as("The amount of languages deepl claims to have does not seem to be right")
+                .isEqualTo(homePage.getSelectableLanguageCount());
+    }
+
+    @After("@web")  // gets executed after any test scenario in the web
     public void closeDriver() {
         webDriverManager.closeDriver();
     }

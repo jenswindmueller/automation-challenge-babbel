@@ -8,22 +8,19 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.NoSuchElementException;
 import java.net.MalformedURLException;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Log4j2
 public class AppiumStep extends Capabilities {
 
-    @Before("@appium")
+    @Before("@android") // gets executed before any test scenario in the android app
     public void setUp() throws MalformedURLException {
-        preparation();
+        preparation(); // starts the appium server and opens the QA app
     }
 
     @Given("User Logs in to QA App with {string} and {string}")
     public void userLogsInToQAAppWithAnd(String emailAddress, String password) {
-        log.info("User is logging in with given user credentials");
         MobileElement emailField = driver.findElementById("com.github.fgoncalves.qa:id/email");
         MobileElement passwordField = driver.findElementById("com.github.fgoncalves.qa:id/password");
         MobileElement signInButton = driver.findElementById("com.github.fgoncalves.qa:id/email_sign_in_button");
@@ -32,7 +29,7 @@ public class AppiumStep extends Capabilities {
         signInButton.click();
     }
 
-    @When("User is logged in successfully") //Finish this method tonight
+    @When("User is logged in successfully")
     public void userIsLoggedInSuccessfully() {
         boolean loginSuccess = true;
         try {
@@ -44,7 +41,6 @@ public class AppiumStep extends Capabilities {
         try {
             Thread.sleep(5000); //using Thread.sleep to give the app time to load 
         } catch(InterruptedException e) {
-            log.info("got interrupted!");
         }
     }
 
@@ -61,7 +57,6 @@ public class AppiumStep extends Capabilities {
         try {
             Thread.sleep(1500);
         } catch(InterruptedException e) {
-            log.info("got interrupted!");
         }
     }
 
@@ -70,14 +65,13 @@ public class AppiumStep extends Capabilities {
         boolean captured = true;
         try {
             MobileElement captureMe = driver.findElementByXPath("//android.widget.Toast");
-            log.info(captureMe.getText());
         } catch (NoSuchElementException e) {
             captured = false;
         }
         assertThat(captured).as("Nothing happened").isEqualTo(true);
     }
 
-    @After("@appium")
+    @After("@android") // gets executed after any test scenario in the android app
     public void closeUp() {
         stopServer();
     }

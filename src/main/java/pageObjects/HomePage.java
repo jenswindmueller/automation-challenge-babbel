@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 
 public class HomePage {
     WebDriver driver;
@@ -34,6 +36,11 @@ public class HomePage {
     @FindBy(css = ".lmt__language_select__active__title > strong")
     private WebElement pickedSourceLanguage;
 
+    @FindBy(css = ".lmt__language_select_column > button")
+    private List<WebElement> selectableLanguages;
+
+    @FindBy(css = "#tabTranslateText > div > div > .textLower--kjeBE")
+    private WebElement numberOfChoices;
 
     public HomePage(WebDriver driver){
         this.driver = driver;
@@ -49,7 +56,7 @@ public class HomePage {
     }
 
     public void selectTargetLanguage() {
-       selectTargetLanguageBtn.click();
+        selectTargetLanguageBtn.click();
     }
 
     public void searchLanguage(String language) {
@@ -70,5 +77,14 @@ public class HomePage {
 
     public String getSourceLanguage() {
         return pickedSourceLanguage.getText();
+    }
+
+    public Integer getSelectableLanguageCount() {
+        return selectableLanguages.size();
+    }
+
+    public Integer getAdvertisedCountOfLanguages() {
+        String[] parts = numberOfChoices.getText().split(" ");
+        return Integer.parseInt(parts[0]);
     }
 }
