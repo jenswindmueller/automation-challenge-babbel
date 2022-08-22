@@ -1,4 +1,6 @@
 .gradle
 build
-out
 reports
+out
+reports/test-report/cucumber-report.html
+reports/test-report/cucumberAndriod-report.html

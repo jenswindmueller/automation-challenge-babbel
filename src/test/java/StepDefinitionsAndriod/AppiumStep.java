@@ -1,6 +1,6 @@
 package StepDefinitionsAndriod;
 
-import andriodSetUp.Capabilities;
+import androidSetUp.Capabilities;
 import io.appium.java_client.MobileElement;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;

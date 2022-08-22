@@ -1,4 +1,4 @@
-package andriodSetUp;
+package androidSetUp;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -22,7 +22,7 @@ public class Capabilities {
         desiredCapabilities.setCapability("platformVersion", "11.0");
         desiredCapabilities.setCapability("deviceName", "Pixel 4 API 30");
         desiredCapabilities.setCapability("automationName", "UiAutomator2");
-        desiredCapabilities.setCapability("app", "app/build/outputs/apk/debug/app-debug.apk");
+        desiredCapabilities.setCapability("app", "/Users/jenswindmuller/Downloads/automation-challenge-master/android/app-debug.apk");
         service = AppiumDriverLocalService.buildDefaultService();
         service.start();
         String service_url = service.getUrl().toString();

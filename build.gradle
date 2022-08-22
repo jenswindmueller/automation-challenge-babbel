@@ -46,7 +46,7 @@ task cucumberWeb() {
     }
 }
 
-task cucumberAndriod() {
+task cucumberAndroid() {
     dependsOn assemble, compileTestJava
     doLast {
         javaexec {
