@@ -23,14 +23,20 @@ Install ***Java 11***
 After that do the following in the terminal, enter ```$ nano ~/.profile``` or ```$ open -e .bash_profile```
 copy these commands and set your own username and JDK version and paste the following on profile:
 ```
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/<the java file>/Contents/Home
-export ANDROID_HOME=/Users/<username>/Library/Android/sdk
-export PATH=$/Library/Java/JavaVirtualMachines/<the java file>/Contents/Home/
-bin:$PATH
-export PATH="/Users/ <username> /Library/Android/sdk/platform-tools":$PATH
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$JAVA_HOME/bin:$PATH
+export ANDROID_HOME=/Users/<user>/Library/Android/sdk
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/tools/bin:$PATH
 ```
 Save from File > Save and close the bash profile text editor  
 Now your Java and Android home environment variable has been set
+
+then source the profile file:
+```
+source ~/.profile
+```
 
 ### Install all the pre-requisites for Appium
 
