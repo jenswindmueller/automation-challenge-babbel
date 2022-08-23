@@ -13,6 +13,7 @@ import pageObjects.HomePage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
 public class DeeplSteps {
 
     WebDriver driver;
@@ -22,6 +23,7 @@ public class DeeplSteps {
 
     @Before("@web") // gets executed before any test scenario in the web
     public void openBrowser() {
+//      This method starts the web driver
         webDriverManager = new WebDriverManager();
         driver = webDriverManager.getDriver();
         pageObjectManager = new PageObjectManager(driver);
@@ -29,6 +31,7 @@ public class DeeplSteps {
 
     @Given("User visits deepl translator")
     public void userVisitsDeeplTranslator() {
+//      This navigates the webdriver to deepl.com
         homePage = pageObjectManager.getHomePage();
         homePage.navigateTo_HomePage();
         homePage.clickAcceptAllCookies();
@@ -36,27 +39,32 @@ public class DeeplSteps {
 
     @When("User views languages to translate from")
     public void userViewsLanguagesToTranslateFrom() {
+//      this method clicks to view all source languages to choose from
         homePage.selectSourceLanguage();
     }
 
     @And("User views languages to translate to")
     public void userViewsLanguagesToTranslateTo() {
+//      this method clicks to view all target languages to choose from
         homePage.selectTargetLanguage();
     }
 
     @And("User selects {string} to translate")
     public void userSelectsToTranslate(String language) {
+//      this method adds the value of String language to the search bar and then select that result
         homePage.searchLanguage(language);
         homePage.selectSearchResult();
     }
 
     @And("User enters text to be translated")
     public void userEntersTextToBeTranslated() {
+//      this method adds the text to be translated
         homePage.enterTextToTranslate("Ich will Babbels nächster Test Automatisierung Ingenieur werden");
     }
 
     @Then("User checks if {string} was auto detected")
     public void userChecksIfAutoDetectWorked(String language) {
+//      this method checks if the correct language was detected by the language detector
         try {
             Thread.sleep(2000); //using Thread.sleep to give the deepl time to detect the Language
         } catch(InterruptedException e) {
@@ -66,6 +74,7 @@ public class DeeplSteps {
 
     @Then("User verifies amount of languages are as stated")
     public void userVerifiesAmountOfLanguagesAreAsStated() {
+//      this method checks if the amount of languages deepl states it offers is actually true
         assertThat(homePage.getAdvertisedCountOfLanguages())
                 .as("The amount of languages deepl claims to have does not seem to be right")
                 .isEqualTo(homePage.getSelectableLanguageCount());

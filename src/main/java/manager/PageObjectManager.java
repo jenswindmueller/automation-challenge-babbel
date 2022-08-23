@@ -3,6 +3,7 @@ package manager;
 import org.openqa.selenium.WebDriver;
 import pageObjects.HomePage;
 
+// when wanting to create a new PageObject please follow the syntax of homePage below
 public class PageObjectManager {
     private WebDriver driver;
     private HomePage homePage;

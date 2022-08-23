@@ -21,6 +21,7 @@ public class AppiumStep extends Capabilities {
 
     @Given("User Logs in to QA App with {string} and {string}")
     public void userLogsInToQAAppWithAnd(String emailAddress, String password) {
+//      this method fills out the login information and clicks on the login button
         MobileElement emailField = driver.findElementById("com.github.fgoncalves.qa:id/email");
         MobileElement passwordField = driver.findElementById("com.github.fgoncalves.qa:id/password");
         MobileElement signInButton = driver.findElementById("com.github.fgoncalves.qa:id/email_sign_in_button");
@@ -31,13 +32,15 @@ public class AppiumStep extends Capabilities {
 
     @When("User is logged in successfully")
     public void userIsLoggedInSuccessfully() {
+//      this method checks if the login was successful by checking if the loading symbol there and waits then so the next page can load
         boolean loginSuccess = true;
         try {
             MobileElement loginProgress = driver.findElementById("com.github.fgoncalves.qa:id/login_progress");
         } catch (NoSuchElementException e) {
            loginSuccess = false;
         }
-        assertThat(loginSuccess).as("Login failed please check, for some reason you are still on the login page").isEqualTo(true);
+        assertThat(loginSuccess).as("Login failed please check, for some reason you are still on the login page")
+                .isEqualTo(true);
         try {
             Thread.sleep(5000); //using Thread.sleep to give the app time to load 
         } catch(InterruptedException e) {
@@ -46,12 +49,14 @@ public class AppiumStep extends Capabilities {
 
     @And("User clicks On CLick Me button below the Image")
     public void userClicksOnCLickMeButtonBelowTheImage() {
+//      this method clicks on the click me button below the image of the house
         MobileElement outOfHomeBtn = driver.findElementById("com.github.fgoncalves.qa:id/OutOfHomeBtn");
         outOfHomeBtn.click();
     }
 
     @And("User clicks On Click me button below the Welcome text")
     public void userClicksOnClickMeButtonBelowTheWelcomeText() {
+//      this method clicks on the click me button below the welcome text
         MobileElement outOfHomeBtn = driver.findElementById("com.github.fgoncalves.qa:id/clickMeBtn");
         outOfHomeBtn.click();
         try {
@@ -62,6 +67,7 @@ public class AppiumStep extends Capabilities {
 
     @Then("User checks if a Text appears")
     public void userChecksIfATextAppears() {
+//      this method checks if the capture me text is present
         boolean captured = true;
         try {
             MobileElement captureMe = driver.findElementByXPath("//android.widget.Toast");

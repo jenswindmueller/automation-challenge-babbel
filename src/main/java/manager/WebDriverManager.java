@@ -35,6 +35,7 @@ public class WebDriverManager {
         return driver;
     }
 
+//  remote web driver is not set up currently
     private WebDriver createRemoteDriver() {
         throw new RuntimeException("RemoteWebDriver is not yet implemented");
     }

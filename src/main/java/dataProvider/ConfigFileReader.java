@@ -9,7 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-
+// in this class we have multiple methods that get the values stored in Configuration Properties
 public class ConfigFileReader {
     private Properties properties;
     private final String propertyFilePath= "configs//Configuration.properties";

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class HomePage {
     WebDriver driver;
-
+//  locating web elements
     @FindBy(css = ".lmt__language_select--source > .lmt__language_select__active")
     private WebElement selectSourceLanguageBtn;
 
@@ -43,6 +43,7 @@ public class HomePage {
     private WebElement numberOfChoices;
 
     public HomePage(WebDriver driver){
+//      this method initializes web elements which are defined above
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -51,8 +52,7 @@ public class HomePage {
         driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
     }
 
-    public void selectSourceLanguage() {
-        selectSourceLanguageBtn.click();
+    public void selectSourceLanguage() {selectSourceLanguageBtn.click();
     }
 
     public void selectTargetLanguage() {
