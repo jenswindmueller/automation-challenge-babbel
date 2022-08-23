@@ -11,7 +11,7 @@ it in but I am very pleased with my result.
 
 
 ## Installation
-Download or clone this repository since we will be executing the Anndroid test scenarios in this app:
+Download or clone repository in the link since we will be executing the Anndroid test scenarios in this app:
 https://github.com/babbel-careers/automation-challenge
 
 Download and Install IntelliJ - IDE (community version is fine for this project) https://www.jetbrains.com/idea/download/#section=mac
@@ -93,11 +93,14 @@ After the build has finished:
 Go to src/main/java/androidSetUp/Capabilities.java
 In line 25 add the file path of the app-debug.apk that way the server knows which app we are running our automation on (it should look something like this “/automation-challenge-master/android/app-debug.apk”)
 
-Then proceed to build.gradle
-on the bottom of the file there are two tasks cucumberWeb() and cucumberAndroid()  
-First run cucumberWeb() after that run cucumberAndroid()
+Open Preferences > Plugins install ***Cucumber for Java*** and ***Gherkin***  
+For the webdriver there is chromedriver intalled for Chrome version 104   
+Open build.gradle    
+On the bottom of the file there are two tasks cucumberWeb() and cucumberAndroid()    
+First run ***cucumberWeb()*** after that run ***cucumberAndroid()***   
+You might see some popups apearing asking to allow intellij to access the android app or the chromedriver, if so simply rerun the task.
 
 Then you can open the feature files and run whichever test needed 
 (for andriod tests make sure you leave the emulator open)
 
-
+This was all for the installation 
