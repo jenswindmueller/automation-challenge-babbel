@@ -104,3 +104,25 @@ Then you can open the feature files and run whichever test needed
 (for andriod tests make sure you leave the emulator open)
 
 This was all for the installation 
+
+## Frameworks/Tools/Patterns used
+
+I used Cucumber because it is a tool based on Behavior Driven Development framework that can act as the bridge between Manual Testers and Test Automation Engineers since it uses Gherkin language which is in plain text. Anyone can understand the behaviour of the software.
+
+For Web automation I used the Selenium WebDriver I was already familiar with it
+
+For Android automation I used the Appium AndroidDriver It seems to be a good option to combine with Selenium WebDriver and has a fast set up. It was also a plus that it is already used at Babbel.
+
+The programming language I chose was Java because the vast majority of Selenium testers are using Java which makes knowledge sharing easy and quick.
+
+For Web testing I used the Page Object Model using Page Factory (for now I have one Page Object set up but more can be easily added on in the future)
+The reason for using the Page Object model was:
+1. It allows easy access for maintaining and adding more test cases
+2. It makes it easy to write reusable code
+3. It makes the scripts more readable by navigating through the java classes
+
+For Android testing I was going to use the same approach but as time went on I realised my goal was a bit over ambitious so I kept my tests in the step files instead of using Page Objects.
+
+For locating elements in the DOM in Chrome I used an extension called ChroPath it helps creating and validating selectors.
+
+For locating elements in the Android app I used Appium Inspector.

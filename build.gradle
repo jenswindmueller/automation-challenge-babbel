@@ -41,7 +41,7 @@ task cucumberWeb() {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'html:reports/test-report/cucumber-report.html', '--plugin', 'pretty', '--glue', 'StepDefinitionsWeb', 'src/test/resources/webFeatures']
+            args = ['--plugin', 'html:reports/test-report/cucumber-report.html', '--plugin', 'pretty', '--glue', 'StepDefinitionsWeb', 'src/test/resources/webFeatures', '--tags', '@web']
         }
     }
 }
@@ -52,7 +52,7 @@ task cucumberAndroid() {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'html:reports/test-report/cucumberAndriod-report.html', '--plugin', 'pretty', '--glue', 'StepDefinitionsAndriod', 'src/test/resources/andriodFeatures']
+            args = ['--plugin', 'html:reports/test-report/cucumberAndriod-report.html', '--plugin', 'pretty', '--glue', 'StepDefinitionsAndriod', 'src/test/resources/andriodFeatures', '--tags', '@android']
         }
     }
 }
