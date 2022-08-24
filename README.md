@@ -3,7 +3,7 @@
 
 
 When presented with this challenge, I saw a good opportunity to combine my previous experience with Cucumber and 
-Selenium with Appuim knowing that Babbel uses it for Mobile Test Automation. 
+Selenium with Appium knowing that Babbel uses it for Mobile Test Automation. 
 Overall I really enjoyed this hiring challenge as it truly tests the necessary knowledge of Test Automation Engineering and I even learned 
 new things along the way. I could have spent weeks perfecting it more and more so it was quite hard to find a cut off point and hand 
 it in but I am very pleased with my result.
@@ -11,10 +11,10 @@ it in but I am very pleased with my result.
 
 
 ## Installation
-Download or clone repository in the link since we will be executing the Anndroid test scenarios in this app:
+Download or clone repository in the link since we will be executing the Android test scenarios in this app:
 https://github.com/babbel-careers/automation-challenge
 
-Download and Install IntelliJ - IDE (community version is fine for this project) https://www.jetbrains.com/idea/download/#section=mac
+Download and install IntelliJ - IDE (community version is fine for this project) https://www.jetbrains.com/idea/download/#section=mac
 
 Same goes for Android Studio https://developer.android.com/studio/
 after installing check if android studio needs to be restarted
@@ -103,15 +103,15 @@ You might see some popups apearing asking to allow intellij to access the androi
 Then you can open the feature files and run whichever test needed 
 (for andriod tests make sure you leave the emulator open)
 
-This was all for the installation 
+The installation is now complete
 
 ## Frameworks/Tools/Patterns used
 
 I used Cucumber because it is a tool based on Behavior Driven Development framework that can act as the bridge between Manual Testers and Test Automation Engineers since it uses Gherkin language which is in plain text. Anyone can understand the behaviour of the software.
 
-For Web automation I used the Selenium WebDriver I was already familiar with it
+For Web automation I used the Selenium WebDriver as I was already familiar with it.
 
-For Android automation I used the Appium AndroidDriver It seems to be a good option to combine with Selenium WebDriver and has a fast set up. It was also a plus that it is already used at Babbel.
+For Android automation I used the Appium AndroidDriver, it seems to be a good option to combine with Selenium WebDriver and has a fast set up. It was also a plus that it is used at Babbel.
 
 The programming language I chose was Java because the vast majority of Selenium testers are using Java which makes knowledge sharing easy and quick.
 
@@ -119,10 +119,10 @@ For Web testing I used the Page Object Model using Page Factory (for now I have 
 The reason for using the Page Object model was:
 1. It allows easy access for maintaining and adding more test cases
 2. It makes it easy to write reusable code
-3. It makes the scripts more readable by navigating through the java classes
+3. It makes the scripts more readable by navigating through the files
 
-For Android testing I was going to use the same approach but as time went on I realised my goal was a bit over ambitious so I kept my tests in the step files instead of using Page Objects.
+For Android testing I was going to use the same approach but as time went on I realised that I needed to focus on finishing up so I kept my tests in the step files instead of using Page Objects.
 
-For locating elements in the DOM in Chrome I used an extension called ChroPath it helps creating and validating selectors.
+For locating elements in the DOM in Chrome I used an extension called ChroPath, it helps creating and validating selectors.
 
 For locating elements in the Android app I used Appium Inspector.
